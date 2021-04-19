@@ -14,6 +14,8 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import java.awt.Toolkit;
+import javax.swing.JCheckBox;
+import javax.swing.JPasswordField;
 
 public class GUIuser {
 	
@@ -21,11 +23,11 @@ public class GUIuser {
 	private JTextField firstName;
 	private JTextField lastName;
 	private JTextField email;
-	private JTextField password;
 	static int id=0;
 	public ArrayList<Users> users = new ArrayList<Users>();
 	public String path="C:\\Users\\Raag\\Downloads\\user.csv";
 	int flag=0;
+	private JPasswordField password;
 
 	GUIuser(){
 		frame.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Raag\\Downloads\\unnamed.png"));
@@ -92,12 +94,6 @@ public class GUIuser {
 		email.setBounds(166, 299, 272, 31);
 		frame.getContentPane().add(email);
 		
-		password = new JTextField();
-		password.setFont(new Font("Times New Roman", Font.PLAIN, 14));
-		password.setColumns(10);
-		password.setBounds(166, 375, 272, 31);
-		frame.getContentPane().add(password);
-		
 		JButton SignInbutton = new JButton("Register Now");
 		SignInbutton.addActionListener(new ActionListener() {
 			
@@ -115,6 +111,18 @@ public class GUIuser {
 							user.setId(Integer.valueOf(reader.get("id")));
 							user.setEmail(reader.get("email"));
 							user.setPassword(reader.get("password"));
+							
+							user.setSlot1(reader.get("slot1"));
+							user.setSlot2(reader.get("slot2"));
+							user.setSlot3(reader.get("slot3"));
+							user.setStime(Integer.valueOf(reader.get("stime")));
+							user.setEtime(Integer.valueOf(reader.get("etime")));
+							user.setL1(reader.get("l1"));
+							user.setL2(reader.get("l2"));
+							user.setL3(reader.get("l3"));
+							user.setStatus(reader.get("status"));
+							user.setParkingid(reader.get("parkingid"));
+							
 							id=Integer.valueOf(reader.get("id"));
 							
 							if(email.getText().equals( reader.get("email"))) {
@@ -144,7 +152,7 @@ public class GUIuser {
 							flag=0;
 							id++;
 						
-							UserManagement use = new UserManagement(firstName.getText(), lastName.getText(), id, email.getText(), password.getText(),users);
+							UserManagement use = new UserManagement(firstName.getText(), lastName.getText(), id, email.getText(), password.getText(),null,null,null,0,0,null,null,null,null,null,users);
 									
 							users.clear();
 						
@@ -166,10 +174,34 @@ public class GUIuser {
 		SignInbutton.setForeground(Color.BLACK);
 		SignInbutton.setFont(new Font("Snap ITC", Font.PLAIN, 16));
 		SignInbutton.setBackground(new Color(255, 255, 0));
-		SignInbutton.setBounds(166, 443, 184, 69);
+		SignInbutton.setBounds(166, 458, 184, 69);
 		frame.getContentPane().add(SignInbutton);
+		
+		password = new JPasswordField();
+		password.setFont(new Font("Times New Roman", Font.PLAIN, 14));
+		password.setEchoChar('*');
+		password.setBounds(166, 371, 272, 31);
+		frame.getContentPane().add(password);
 		frame.setBounds(100, 100, 526, 594);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		JCheckBox chckbxNewCheckBox = new JCheckBox("Show password");
+		chckbxNewCheckBox.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(chckbxNewCheckBox.isSelected()) {
+					password.setEchoChar((char)0);
+				}else {
+					password.setEchoChar('*');
+				}
+			}
+		});
+		chckbxNewCheckBox.setForeground(new Color(255, 255, 255));
+		chckbxNewCheckBox.setFont(new Font("Rockwell Extra Bold", Font.PLAIN, 12));
+		chckbxNewCheckBox.setBackground(new Color(0, 191, 255));
+		chckbxNewCheckBox.setBounds(166, 403, 161, 33);
+		frame.getContentPane().add(chckbxNewCheckBox);
+		
+		
 		
 	}
 }

@@ -84,10 +84,20 @@ public class GuiSignIn {
 							user.setId(Integer.valueOf(reader.get("id")));
 							user.setEmail(reader.get("email"));
 							user.setPassword(reader.get("password"));
+							user.setSlot1(reader.get("slot1"));
+							user.setSlot2(reader.get("slot2"));
+							user.setSlot3(reader.get("slot3"));
+							user.setStime(Integer.valueOf(reader.get("stime")));
+							user.setEtime(Integer.valueOf(reader.get("etime")));
+							user.setL1(reader.get("l1"));
+							user.setL2(reader.get("l2"));
+							user.setL3(reader.get("l3"));
+							user.setStatus(reader.get("status"));
+							user.setParkingid(reader.get("parkingid"));
 
 							if(email.getText().equals( reader.get("email")) && password.getText().equals(reader.get("password")) ) {
 								flag=1;
-								GUIBookParking book =new GUIBookParking();	
+								GUIBookParking book =new GUIBookParking(user);	
 								frame.dispose();
 
 								break;
