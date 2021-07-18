@@ -13,6 +13,7 @@ public class HeapSort implements MapSort<String, Double>{
      * @map to be sorted;
      */	
 	public Map<String, Double> map;
+	
     
 	/**
 	 * TODO: There are missing methods, you can find clues of these methods from test cases.
@@ -32,8 +33,13 @@ public class HeapSort implements MapSort<String, Double>{
 		 */
 		
 		ArrayList<Map.Entry<String, Double>> listOfEnrtries = new ArrayList<>(this.map.entrySet());
+		
+		
+	
+	
 
 		int n = listOfEnrtries.size();	
+		
 		
 		for (int i = n / 2 ; i >= 0; i--) {
 			heapify(listOfEnrtries, n, i);// max heap

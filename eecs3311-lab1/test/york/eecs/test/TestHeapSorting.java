@@ -25,16 +25,27 @@ public class TestHeapSorting {
 	    @Test
 	    public void test_heap_basic() {
 		Map<String, Double> map_to_be_sorted = new HashMap<String, Double>();
+		
 		map_to_be_sorted.put("A", 99.5);
 		map_to_be_sorted.put("E", 50.3);
 		map_to_be_sorted.put("C", 167.4);
 		map_to_be_sorted.put("D", 87.3); 
 		map_to_be_sorted.put("B", 77.4);
+		System.out.println(map_to_be_sorted.keySet());
+		Map<String, Double> map_to_be_sorted1 = new HashMap<String, Double>();
+		map_to_be_sorted1.put("A", 99.5);
+		map_to_be_sorted1.put("E", 50.3);
+		map_to_be_sorted1.put("C", 167.4);
+		map_to_be_sorted1.put("D", 87.3); 
+		map_to_be_sorted1.put("B", 77.4);
+
+
 	    
 	    /**
 	     * Initialize the `map' in bubble with `map_to_be_sorted';
 	     */
-	    heapsort.setMap(map_to_be_sorted);    
+	    heapsort.setMap(map_to_be_sorted);  
+	    
 	    
 	    /**
 	     * Expected results: the order of keys after ranking `map' by value with max heap algorithm;
@@ -45,7 +56,8 @@ public class TestHeapSorting {
 		results.add("D");
 		results.add("A");
 		results.add("C");
-		
+		//System.out.println(new ArrayList<>(map_to_be_sorted.values()).equals(new ArrayList<>(map_to_be_sorted1.values())) );
+		//System.out.println(map_to_be_sorted.get(heapsort.sortbyValue().get(map_to_be_sorted.size()-1)));
 		/**
 		 * map size should be the same;
 		 */
