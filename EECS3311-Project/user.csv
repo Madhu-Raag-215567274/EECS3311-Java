@@ -1,0 +1,6 @@
+name,lastname,id,email,password,slot1,slot2,slot3,stime,etime,l1,l2,l3,status,parkingid
+"",,0,test@g.com,,,,,0,0,,,,,
+"",,0,,,,,,0,0,ABFY3456,QWTY9875,,,
+"",,0,test2@g.com,,,,,0,0,,,,,
+"",,0,test3@g.com,,,,,0,0,,,,,
+John,Lim,0,,,,,,0,0,,,,,
