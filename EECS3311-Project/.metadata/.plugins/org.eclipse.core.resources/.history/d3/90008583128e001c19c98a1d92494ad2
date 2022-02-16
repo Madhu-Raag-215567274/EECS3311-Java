@@ -1,0 +1,43 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+import com.csvreader.CsvReader;
+
+public class Client {
+	public String item,price;
+	public String id;
+	public ArrayList<Items> items = new ArrayList<Items>();
+	public String path="item.csv";
+	public ItemManagement manage;
+	
+	public String ingredients,dimensions,category,nutrition;
+	
+	public Client() throws Exception {
+		manage = new ItemManagement(items);
+		manage.load();
+		
+		
+		Scanner item = new Scanner(System.in);
+		
+		System.out.println("Search an Item");
+		this.item= item.nextLine();
+		
+		CsvReader reader = new CsvReader(path); 
+		reader.readHeaders();
+		
+		while(reader.readRecord()){ 
+		
+			if(this.item.equals(reader.get("item"))) {
+				
+			}
+		
+		
+		}
+		
+		
+	
+		
+		
+	}
+
+}

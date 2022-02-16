@@ -1,0 +1,12 @@
+import com.sun.tools.javac.parser.Scanner;
+
+public class Client {
+	
+	
+	public Client() {
+		
+		Scanner s = new Scanner(System.in);
+		
+	}
+
+}

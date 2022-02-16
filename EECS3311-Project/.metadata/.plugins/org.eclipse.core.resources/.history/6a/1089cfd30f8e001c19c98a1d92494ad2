@@ -1,0 +1,22 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Client {
+	public String item,price;
+	public String id;
+	public ArrayList<Items> items = new ArrayList<Items>();
+	public String path="item.csv";
+	
+	public String ingredients,dimensions,category,nutrition;
+	
+	public Client() {
+		
+		Scanner item = new Scanner(System.in);
+		
+		System.out.println("Search an Item");
+		this.item= item.nextLine();
+		
+		
+	}
+
+}

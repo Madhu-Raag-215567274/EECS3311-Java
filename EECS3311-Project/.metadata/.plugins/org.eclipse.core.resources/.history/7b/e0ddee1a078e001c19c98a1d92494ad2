@@ -1,0 +1,86 @@
+	import java.io.File;
+	import java.io.FileWriter;
+	import java.util.ArrayList;
+	import com.csvreader.CsvReader;
+	import com.csvreader.CsvWriter;
+
+	public class ItemManagement {
+		public ArrayList<Items> users = new ArrayList<Items>();
+		public String path="item.csv";
+
+		
+		 public ItemManagement(String item,String price, String id, String ingredients, String dimensions,String category, String nutrition) throws Exception  {
+		
+			 	Items us=new Items (item, price,  id,  ingredients,  dimensions, category,  nutrition);			
+				this.users.add(us);			
+				update();
+			
+			}
+		 public ItemManagement(ArrayList<Items> users2) {
+			 this.users=users2;
+			 try {
+				update();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			// TODO Auto-generated constructor stub
+		}
+		
+		
+		public void load() throws Exception{
+			CsvReader reader = new CsvReader(path); 
+			reader.readHeaders();
+			
+			while(reader.readRecord()){ 
+				Items user = new Items();
+				//name,lastname,id,email,password
+				user.setItem(reader.get("item"));
+				user.setPrice(reader.get("price"));
+				user.setId(reader.get("id"));
+				user.setIngredients(reader.get("ingredients"));
+				user.setDimensions(reader.get("dimensions"));
+				user.setCategory(reader.get("category"));
+				user.setNutrition(reader.get("nutrition"));
+			
+			}
+		}
+		
+		public void update() throws Exception{
+			try {		
+					CsvWriter csvOutput = new CsvWriter(new FileWriter(path, false), ',');
+					//name,id,email,password
+					csvOutput.write("item");
+					csvOutput.write("price");
+					csvOutput.write("id");
+			    	csvOutput.write("ingredients");
+			    	csvOutput.write("dimensions");
+					csvOutput.write("category");
+					csvOutput.write("nutrition");
+					
+					csvOutput.endRecord();
+
+					// else assume that the file already has the correct header line
+					// write out a few records
+					for(Items u: users){
+						csvOutput.write(u.getItem());
+						csvOutput.write(u.getPrice());
+						csvOutput.write(u.getId());
+						csvOutput.write(u.getIngredients());
+						csvOutput.write(u.getDimensions()) ;
+						csvOutput.write(u.getCategory());
+						csvOutput.write(u.getNutrition());					
+					
+						csvOutput.endRecord();
+					}
+					csvOutput.close();
+				
+				}catch (Exception e) {
+					e.printStackTrace();
+				}
+		}
+		
+	}
+
+
+
